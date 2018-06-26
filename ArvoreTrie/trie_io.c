@@ -1,4 +1,4 @@
-#include <stio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "trie.h"
@@ -8,39 +8,39 @@
 
 /* Função que abre um arquivo contendo palavras formadas pelas letras do alfabeto ABMIO e as insere na árvore TRIE */
 void trie_gerarArvore(no* arv, char* palavra, char* nomeArqEntrada) {
-	FILE* arquivoEnt;
-	int i = 0; 
-	int numPalavras = 0; 
-	char* vetChavesArv;
+    FILE* arquivoEnt;
+    int i = 0;
+    int numPalavras = 0;
+    char* vetChavesArv;
 
-	arquivoEnt = fopen(nomeArqEntrada, "r+"); 
+    arquivoEnt = fopen(nomeArqEntrada, "r+");
 
-	if(arquivoEnt == NULL) {
-		printf("[!] Não foi possível abrir o arquivo \"%s\". \n", nomeArqEntrada); 
-		break;
-	} else {
-		// Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
-		fscanf(arquivoEnt, "%d", numPalavras); 
-		
-		vetChavesArv = (*char) calloc(numPalavras, sizeof(char)); 
+    if (arquivoEnt == NULL) {
+        printf("[!] Não foi possível abrir o arquivo \"%s\". \n", nomeArqEntrada);
+        break;
+    } else {
+        // Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
+        fscanf(arquivoEnt, "%d", numPalavras);
 
-		// Verifica se foi possível realizar a alocação de espaço para o vetor
-		if(vetChavesArv == NULL) {
-			printf("[!] Não foi possível alocar memória. \n"); 
-			return NULL;
-		} else {
-			/* Lê o conteúdo do arquivo e armazena elemento por elemento no vetor, até encontrar o fim do arquivo (EOF - End of File) */
-			while((fscanf(arquivoEnt, " %s\n", (vetChavesArv+i) )) != EOF) {
-				i++; 
-			}
+        vetChavesArv = (*char) calloc(numPalavras, sizeof (char));
 
-			for(i = 0; i < numPalavras; i++) {
-				arv = trie_adicionarPalavra(palavra, arv); 
-			}
+        // Verifica se foi possível realizar a alocação de espaço para o vetor
+        if (vetChavesArv == NULL) {
+            printf("[!] Não foi possível alocar memória. \n");
+            return NULL;
+        } else {
+            /* Lê o conteúdo do arquivo e armazena elemento por elemento no vetor, até encontrar o fim do arquivo (EOF - End of File) */
+            while ((fscanf(arquivoEnt, " %s\n", (vetChavesArv + i))) != EOF) {
+                i++;
+            }
 
-		}
-	}
-	// Dados lidos do arquivo, fecha arquivo.
-	fclose(arquivoEnt);
+            for (i = 0; i < numPalavras; i++) {
+                arv = trie_adicionarPalavra(palavra, arv);
+            }
+
+        }
+    }
+    // Dados lidos do arquivo, fecha arquivo.
+    fclose(arquivoEnt);
 
 }

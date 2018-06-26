@@ -9,13 +9,13 @@ no* trie_criarNo() {
     no* novoNo = (*no) calloc(1, sizeof (no)); // Aloca-se um novo nó da trie.
 
     if (novoNo != NULL) {
-    	novoNo->tipo = 'I'; // O novo nó criado é do tipo 'Interno'
+        novoNo->tipo = 'I'; // O novo nó criado é do tipo 'Interno'
         for (i = 0; i < TAMANHO_ALFABETO; i++) {
             novoNo->filho[i] = NULL; // Inicializando o nó: cada campo tem valor nulo. 
         }
     }
 
-    return novoNo; 
+    return novoNo;
 }
 
 /* Percorre a TRIE, comparando os elementos da palavra e os prefixos já existentes na árvore. 
@@ -29,19 +29,19 @@ no* trie_adicionarPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto. Se os caracteres forem iguais, o resultado da comparação é verdadeiro. */
     for (nivel = 0; nivel < strlen(palavra); nivel++) {
-        if (strcmp(palavra[nivel],"A") == 0) { // Letra 'a' está na posição 0 no alfabeto
+        if (strcmp(palavra[nivel], "A") == 0) { // Letra 'a' está na posição 0 no alfabeto
             indice = 0;
         }
-        if (strcmp(palavra[nivel],"B") == 0) { // Letra 'b' está na posição 1 no alfabeto
+        if (strcmp(palavra[nivel], "B") == 0) { // Letra 'b' está na posição 1 no alfabeto
             indice = 1;
         }
-        if (strcmp(palavra[nivel],"M") == 0) { // Letra 'm' está na posição 2 no alfabeto
+        if (strcmp(palavra[nivel], "M") == 0) { // Letra 'm' está na posição 2 no alfabeto
             indice = 2;
         }
-        if (strcmp(palavra[nivel],"I") == 0) { // Letra 'i' está na posição 3 no alfabeto
+        if (strcmp(palavra[nivel], "I") == 0) { // Letra 'i' está na posição 3 no alfabeto
             indice = 3;
         }
-        if (strcmp(palavra[nivel],"O") == 0) { // Letra 'o' está na posição 4 no alfabeto
+        if (strcmp(palavra[nivel], "O") == 0) { // Letra 'o' está na posição 4 no alfabeto
             indice = 4;
         }
         /* Chegou-se no ponto onde um dos elementos da palavra não possui um nó/prefixo equivalente presente na árvore.
@@ -54,7 +54,7 @@ no* trie_adicionarPalavra(char* palavra, no* raiz) {
     }
     aux->tipo = 'P'; // Criou-se a palavra. 
 
-    return raiz; 
+    return raiz;
 }
 
 /* Função responsável por verificar se uma palavra se encontra ou não na árvore. Retorna o número 1 em caso afirmativo, e 0
@@ -62,42 +62,42 @@ caso contrário. A função consecutivamente captura cada elemento da palavra, c
 nó e passa a avaliar esse nó, verificando assim se todos os elementos formadores da palavra estão presentes sequencialmente em 
 um dos caminhos da árvore (busca com sucesso). */
 int trie_buscaPalavra(char* palavra, no* raiz) {
-	int i = 0;
-	int indice = 0; // Posição que a palavra ocupa em relação ao alfabeto 
-	no* aux = raiz; // nó auxiliar para caminhar na árvore
+    int i = 0;
+    int indice = 0; // Posição que a palavra ocupa em relação ao alfabeto 
+    no* aux = raiz; // nó auxiliar para caminhar na árvore
 
-	/* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
-	de cada elemento da palavra em relação ao alfabeto */
-	for (i = 0; i < strlen(palavra); i++) {
-	    if (palavra[i].strcmp("A")) { // Letra 'A' está na posição 0 no alfabeto/vetor
-	        indice = 0;
-	    }
-	    if (palavra[i].strcmp("B")) { // Letra 'B' está na posição 1 no alfabeto/vetor
-	        indice = 1;
-	    }
-	    if (palavra[i].strcmp("M")) { // Letra 'M' está na posição 2 no alfabeto/vetor
-	        indice = 2;
-	    }
-	    if (palavra[i].strcmp("I")) { // Letra 'I' está na posição 3 no alfabeto/vetor
-	        indice = 3;
-	    }
-	    if (palavra[i].strcmp("O")) { // Letra 'O' está na posição 4 no alfabeto/vetor
-	        indice = 4;
-	    }
+    /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
+    de cada elemento da palavra em relação ao alfabeto */
+    for (i = 0; i < strlen(palavra); i++) {
+        if (palavra[i].strcmp("A")) { // Letra 'A' está na posição 0 no alfabeto/vetor
+            indice = 0;
+        }
+        if (palavra[i].strcmp("B")) { // Letra 'B' está na posição 1 no alfabeto/vetor
+            indice = 1;
+        }
+        if (palavra[i].strcmp("M")) { // Letra 'M' está na posição 2 no alfabeto/vetor
+            indice = 2;
+        }
+        if (palavra[i].strcmp("I")) { // Letra 'I' está na posição 3 no alfabeto/vetor
+            indice = 3;
+        }
+        if (palavra[i].strcmp("O")) { // Letra 'O' está na posição 4 no alfabeto/vetor
+            indice = 4;
+        }
 
-	    /* Desce na árvore comparando os prefixos existentes no caminho com cada elemento da palavra, de modo semelhante à
-	    trie_adicionarPalavra.   */
-	    if(aux->filho[indice] != NULL) {
-	    	aux = aux->filho[indice]; 
-	    } else {
-	    	return 0; 
-	    }	    
-	}
+        /* Desce na árvore comparando os prefixos existentes no caminho com cada elemento da palavra, de modo semelhante à
+        trie_adicionarPalavra.   */
+        if (aux->filho[indice] != NULL) {
+            aux = aux->filho[indice];
+        } else {
+            return 0;
+        }
+    }
 
-	if(palavra[i] == '\0' && aux->tipo == 'P') {
-		return 1; // A palavra se encontra na árvore. 
-	} else {
-		return 0; // A palavra não se encontra na árvore. 
-	}
+    if (palavra[i] == '\0' && aux->tipo == 'P') {
+        return 1; // A palavra se encontra na árvore. 
+    } else {
+        return 0; // A palavra não se encontra na árvore. 
+    }
 }
 
