@@ -31,30 +31,30 @@ no* trie_adicionarPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto. Se os caracteres forem iguais, o resultado da comparação é verdadeiro. */
     for (nivel = 0; nivel < strlen(palavra); nivel++) {
-//        char *str1 = &palavra[nivel];
-//        char str2[] = "A";
-//        int ret;
-//
-//        ret = strncmp(str1, str2, 1);
-//        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
-//            indice = 0;
-//        }
+        //        char *str1 = &palavra[nivel];
+        //        char str2[] = "A";
+        //        int ret;
+        //
+        //        ret = strncmp(str1, str2, 1);
+        //        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
+        //            indice = 0;
+        //        }
         if (palavra[nivel] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
         if (palavra[nivel] == 'B') { // Letra 'B' está na posição 1 no alfabeto/vetor
             indice = 1;
         }
-        if (palavra[nivel], 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
+        if (palavra[nivel] == 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
             indice = 2;
         }
-        if (palavra[nivel], 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
+        if (palavra[nivel] == 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
             indice = 3;
         }
-        if (palavra[nivel], 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
+        if (palavra[nivel] == 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
             indice = 4;
         }
-        
+
         /* Chegou-se no ponto onde um dos elementos da palavra não possui um nó/prefixo equivalente presente na árvore.
         Deve-se criar um novo nó para conter o elemento/prefixo não existente. */
         if (aux->filho[indice] == NULL) {
@@ -80,27 +80,27 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto */
     for (i = 0; i < strlen(palavra); i++) {
-//        char *str1 = &palavra[i];
-//        char str2[] = "A";
-//        int ret;
-//
-//        ret = strncmp(str1, str2, 1);
-//        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
-//            indice = 0;
-//        }
+        //        char *str1 = &palavra[i];
+        //        char str2[] = "A";
+        //        int ret;
+        //
+        //        ret = strncmp(str1, str2, 1);
+        //        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
+        //            indice = 0;
+        //        }
         if (palavra[i] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
         if (palavra[i] == 'B') { // Letra 'B' está na posição 1 no alfabeto/vetor
             indice = 1;
         }
-        if (palavra[i], 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
+        if (palavra[i] == 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
             indice = 2;
         }
-        if (palavra[i], 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
+        if (palavra[i] == 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
             indice = 3;
         }
-        if (palavra[i], 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
+        if (palavra[i] == 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
             indice = 4;
         }
 
@@ -108,15 +108,14 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
         trie_adicionarPalavra.   */
         if (aux->filho[indice] != NULL) {
             aux = aux->filho[indice];
-        } else {
-            return 0;
+        }else{
+            return 1;
         }
     }
-
     if (palavra[i] == '\0' && aux->tipo == 'P') {
-        return 1; // A palavra se encontra na árvore. 
-    } else {
-        return 0; // A palavra não se encontra na árvore. 
-    }
+            return 1; // A palavra se encontra na árvore. 
+        } else {
+            return 0; // A palavra não se encontra na árvore. 
+        }
 }
 
