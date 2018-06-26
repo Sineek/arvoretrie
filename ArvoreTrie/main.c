@@ -26,23 +26,24 @@ int main() {
                 trie_gerarArvore(arvore, nomeArquivoEnt);
                 break;
             case 2:
-                printf("Entre com a palavra, tia vanessa");
+                printf("Entre com a palavra, tia vanessa\n");
                 scanf(" %s", palavra);
                 for (int i = 0; i < strlen(palavra); i++) {
-                    if ((palavra[i] = 'A') || (palavra[i] = 'B') || (palavra[i] = 'M') || (palavra[i] = 'I') || (palavra[i] = 'O')) {
+                    if ((palavra[i] == 'A') || (palavra[i] == 'B') || (palavra[i] == 'M') || (palavra[i] == 'I') || (palavra[i] == 'O')) {
                         cont++;
                     }
                 }
 
                 if (cont == strlen(palavra)) {
                     if (trie_buscaPalavra(palavra, arvore) == 1) {
-                        printf("Achamos sua palavra!! aee");
+                        printf("Achamos sua palavra!! aee\n");
                     } else {
-                        printf("Palavra não encontrada");
+                        printf("Palavra não encontrada\n");
                     }
                 } else {
-                    printf("Não achamos sua palavra. :/");
+                    printf("Existem caracteres não existentes no nosso alfabeto, por favor verifique a palavra digitada e tente novamente\n");
                 }
+                cont = 0;
                 break;
             case 3:
                 break;
