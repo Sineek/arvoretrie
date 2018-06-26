@@ -76,6 +76,8 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
     int i = 0;
     int indice = 0; // Posição que a palavra ocupa em relação ao alfabeto 
     no* aux = raiz; // nó auxiliar para caminhar na árvore
+    
+    if(palavra[])
 
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto */
@@ -103,15 +105,14 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
         if (palavra[i] == 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
             indice = 4;
         }
-
+        
         /* Desce na árvore comparando os prefixos existentes no caminho com cada elemento da palavra, de modo semelhante à
         trie_adicionarPalavra.   */
-        if (aux->filho[indice] != NULL) {
+        if (aux->filho[indice] != NULL && palavra[i] == '\0') {
             aux = aux->filho[indice];
-        }else{
-            return 1;
         }
     }
+    
     if (palavra[i] == '\0' && aux->tipo == 'P') {
             return 1; // A palavra se encontra na árvore. 
         } else {
