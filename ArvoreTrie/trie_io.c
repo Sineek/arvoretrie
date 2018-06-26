@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "trie.h"
+#include "trie_io.h"
 
 
 #define TAMANHO_ALFABETO (6) /* Alfabeto formado pelas letras maiúsculas ABMIO mais um elemento para significar o fim do alfabeto. */
@@ -21,7 +22,7 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
         return;
     } else {
         // Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
-        fscanf(arquivoEnt, "%d", numPalavras);
+        fscanf(arquivoEnt, "%d", &numPalavras);
 
         vetChavesArv = calloc(numPalavras, sizeof (char));
 
@@ -36,7 +37,7 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
             }
 
             for (i = 0; i < numPalavras; i++) {
-                arv = trie_adicionarPalavra(palavra, arv);
+                arv = trie_adicionarPalavra((vetChavesArv+i), arv);
             }
 
         }
