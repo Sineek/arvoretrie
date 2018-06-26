@@ -18,7 +18,7 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
 
     if (arquivoEnt == NULL) {
         printf("[!] Não foi possível abrir o arquivo \"%s\". \n", nomeArqEntrada);
-        break;
+        return;
     } else {
         // Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
         fscanf(arquivoEnt, "%d", numPalavras);
@@ -28,7 +28,7 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
         // Verifica se foi possível realizar a alocação de espaço para o vetor
         if (vetChavesArv == NULL) {
             printf("[!] Não foi possível alocar memória. \n");
-            return NULL;
+            return;
         } else {
             /* Lê o conteúdo do arquivo e armazena elemento por elemento no vetor, até encontrar o fim do arquivo (EOF - End of File) */
             while ((fscanf(arquivoEnt, " %s\n", (vetChavesArv + i))) != EOF) {

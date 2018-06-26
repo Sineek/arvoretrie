@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include "trie.h"
+#include <stdio.h>
 
 /* Cria um nó vazio da árvore TRIE */
 no* trie_criarNo() {
     int i;
 
-    no* novoNo = (*no) calloc(1, sizeof (no)); // Aloca-se um novo nó da trie.
+    no* novoNo = calloc(1, sizeof (no)); // Aloca-se um novo nó da trie.
 
     if (novoNo != NULL) {
         novoNo->tipo = 'I'; // O novo nó criado é do tipo 'Interno'
@@ -29,21 +30,30 @@ no* trie_adicionarPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto. Se os caracteres forem iguais, o resultado da comparação é verdadeiro. */
     for (nivel = 0; nivel < strlen(palavra); nivel++) {
-        if (strcmp(palavra[nivel], "A") == 0) { // Letra 'a' está na posição 0 no alfabeto
+//        char *str1 = &palavra[nivel];
+//        char str2[] = "A";
+//        int ret;
+//
+//        ret = strncmp(str1, str2, 1);
+//        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
+//            indice = 0;
+//        }
+        if (palavra[nivel] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
-        if (strcmp(palavra[nivel], "B") == 0) { // Letra 'b' está na posição 1 no alfabeto
+        if (palavra[nivel] == 'B') { // Letra 'B' está na posição 1 no alfabeto/vetor
             indice = 1;
         }
-        if (strcmp(palavra[nivel], "M") == 0) { // Letra 'm' está na posição 2 no alfabeto
+        if (palavra[nivel], 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
             indice = 2;
         }
-        if (strcmp(palavra[nivel], "I") == 0) { // Letra 'i' está na posição 3 no alfabeto
+        if (palavra[nivel], 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
             indice = 3;
         }
-        if (strcmp(palavra[nivel], "O") == 0) { // Letra 'o' está na posição 4 no alfabeto
+        if (palavra[nivel], 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
             indice = 4;
         }
+        
         /* Chegou-se no ponto onde um dos elementos da palavra não possui um nó/prefixo equivalente presente na árvore.
         Deve-se criar um novo nó para conter o elemento/prefixo não existente. */
         if (aux->filho[indice] == NULL) {
@@ -69,19 +79,27 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto */
     for (i = 0; i < strlen(palavra); i++) {
-        if (strcmp(palavra[i], "A") == 0) { // Letra 'A' está na posição 0 no alfabeto/vetor
+//        char *str1 = &palavra[i];
+//        char str2[] = "A";
+//        int ret;
+//
+//        ret = strncmp(str1, str2, 1);
+//        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
+//            indice = 0;
+//        }
+        if (palavra[i] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
-        if (strcmp(palavra[i], "B") == 0) { // Letra 'B' está na posição 1 no alfabeto/vetor
+        if (palavra[i] == 'B') { // Letra 'B' está na posição 1 no alfabeto/vetor
             indice = 1;
         }
-        if (strcmp(palavra[i], "M") == 0) { // Letra 'M' está na posição 2 no alfabeto/vetor
+        if (palavra[i], 'M') { // Letra 'M' está na posição 2 no alfabeto/vetor
             indice = 2;
         }
-        if (strcmp(palavra[i], "I") == 0) { // Letra 'I' está na posição 3 no alfabeto/vetor
+        if (palavra[i], 'I') { // Letra 'I' está na posição 3 no alfabeto/vetor
             indice = 3;
         }
-        if (strcmp(palavra[i], "O") == 0) { // Letra 'O' está na posição 4 no alfabeto/vetor
+        if (palavra[i], 'O') { // Letra 'O' está na posição 4 no alfabeto/vetor
             indice = 4;
         }
 

@@ -14,8 +14,8 @@ struct no {
 
 typedef struct no no;
 
-no trie_criarNo();
-void trie_adicionarPalavra(char* palavra, no* raiz);
+no* trie_criarNo();
+no* trie_adicionarPalavra(char* palavra, no* raiz);
 int trie_buscaPalavra(char* palavra, no* raiz);
 
 
