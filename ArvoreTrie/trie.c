@@ -9,11 +9,11 @@ no trie_criarNo() {
     no* novoNo = (*no) calloc(1, sizeof (no)); // Aloca-se um novo nó da trie.
 
     if (novoNo != NULL) {
+    	novoNo->tipo = 'I'; // O novo nó criado é do tipo 'Interno'
         for (i = 0; i < TAMANHO_ALFABETO; i++) {
             novoNo->filho[i] = NULL; // Inicializando o nó: cada campo tem valor nulo. 
         }
     }
-    novoNo->tipo = '';
 
     return novoNo; 
 }
