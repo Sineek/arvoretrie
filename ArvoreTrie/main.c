@@ -35,8 +35,8 @@ int main() {
                  * pois todas as verificações de caracter por caracter resultaram em verdadeiras. */
                 for (int i = 0; i < strlen(palavra); i++) {
 
-                    if ((palavra[i] = 'A') || (palavra[i] = 'B') || (palavra[i] = 'M') || (palavra[i] = 'I') || (palavra[i] = 'O')) { // Se o caracter for igual a um dos elementos, o resultado é verdadeiro e incrementa-se 'cont'
-                        cont++; 
+                    if ((palavra[i] == 'A') || (palavra[i] == 'B') || (palavra[i] == 'M') || (palavra[i] == 'I') || (palavra[i] == 'O')) { // Se o caracter for igual a um dos elementos, o resultado é verdadeiro e incrementa-se 'cont'
+                        cont++;
 
                     }
                 }

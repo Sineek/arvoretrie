@@ -31,14 +31,6 @@ no* trie_adicionarPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto. Se os caracteres forem iguais, o resultado da comparação é verdadeiro. */
     for (nivel = 0; nivel < strlen(palavra); nivel++) {
-        //        char *str1 = &palavra[nivel];
-        //        char str2[] = "A";
-        //        int ret;
-        //
-        //        ret = strncmp(str1, str2, 1);
-        //        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
-        //            indice = 0;
-        //        }
         if (palavra[nivel] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
@@ -80,14 +72,6 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
     de cada elemento da palavra em relação ao alfabeto */
     for (i = 0; i < strlen(palavra); i++) {
-        //        char *str1 = &palavra[i];
-        //        char str2[] = "A";
-        //        int ret;
-        //
-        //        ret = strncmp(str1, str2, 1);
-        //        if (ret == 0) { // Letra 'a' está na posição 0 no alfabeto
-        //            indice = 0;
-        //        }
         if (palavra[i] == 'A') { // Letra 'A' está na posição 0 no alfabeto/vetor
             indice = 0;
         }
@@ -109,10 +93,10 @@ int trie_buscaPalavra(char* palavra, no* raiz) {
         if (aux->filho[indice] != NULL) {
             aux = aux->filho[indice];
         }else{
-            return 1;
+            return 0;
         }
     }
-    if (palavra[i] == '\0' && aux->tipo == 'P') {
+    if (aux->tipo == 'P') {
             return 1; // A palavra se encontra na árvore. 
         } else {
             return 0; // A palavra não se encontra na árvore. 

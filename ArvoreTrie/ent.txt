@@ -1,7 +1,2 @@
-6
-bioma
+1
 BA
-bia
-bim
-bibi
-baba
