@@ -26,11 +26,14 @@ int main() {
                 trie_gerarArvore(arvore, nomeArquivoEnt);
                 break;
             case 2:
-                printf("Entre com a palavra, tia vanessa");
+                printf("Entre com a palavra, tia Vanessa");
                 scanf(" %s", palavra);
+                /* Verifica, caracter por caracter, se a palavra só contém elementos que pertecem ao alfabeto ABMIO */
+                /* Se todos os caracteres forem adequados ao alfabeto, o contador terá o mesmo valor que o tamanho da palavra, 
+                 * pois todas as verificações de caracter por caracter resultaram em verdadeiras. */
                 for (int i = 0; i < strlen(palavra); i++) {
-                    if ((palavra[i] = 'A') || (palavra[i] = 'B') || (palavra[i] = 'M') || (palavra[i] = 'I') || (palavra[i] = 'O')) {
-                        cont++;
+                    if ((palavra[i] = 'A') || (palavra[i] = 'B') || (palavra[i] = 'M') || (palavra[i] = 'I') || (palavra[i] = 'O')) { // Se o caracter for igual a um dos elementos, o resultado é verdadeiro e incrementa-se 'cont'
+                        cont++; 
                     }
                 }
 
