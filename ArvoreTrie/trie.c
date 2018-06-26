@@ -3,7 +3,7 @@
 #include "trie.h"
 
 /* Cria um nó vazio da árvore TRIE */
-no trie_criarNo() {
+no* trie_criarNo() {
     int i;
 
     no* novoNo = (*no) calloc(1, sizeof (no)); // Aloca-se um novo nó da trie.
@@ -21,27 +21,27 @@ no trie_criarNo() {
 /* Percorre a TRIE, comparando os elementos da palavra e os prefixos já existentes na árvore. 
 Se o prefixo em questão não estiver no ramo avaliado, cria-se um nó para conter o prefixo não existente e assim sucessivamente, 
 até que a palavra esteja criada. */
-void trie_adicionarPalavra(char* palavra, no* raiz) {
+no* trie_adicionarPalavra(char* palavra, no* raiz) {
     int nivel = 0;
     int indice = 0;
     no* aux = raiz;
 
     /* Como o alfabeto não segue o padrão do alfabeto português de 26 letras, deve-se calcular a posição (índice)
-    de cada elemento da palavra em relação ao alfabeto */
+    de cada elemento da palavra em relação ao alfabeto. Se os caracteres forem iguais, o resultado da comparação é verdadeiro. */
     for (nivel = 0; nivel < strlen(palavra); nivel++) {
-        if (palavra[nivel].strcmp("A")) { // Letra 'a' está na posição 0 no alfabeto
+        if (strcmp(palavra[nivel],"A") == 0) { // Letra 'a' está na posição 0 no alfabeto
             indice = 0;
         }
-        if (palavra[nivel].strcmp("B")) { // Letra 'b' está na posição 1 no alfabeto
+        if (strcmp(palavra[nivel],"B") == 0) { // Letra 'b' está na posição 1 no alfabeto
             indice = 1;
         }
-        if (palavra[nivel].strcmp("M")) { // Letra 'm' está na posição 2 no alfabeto
+        if (strcmp(palavra[nivel],"M") == 0) { // Letra 'm' está na posição 2 no alfabeto
             indice = 2;
         }
-        if (palavra[nivel].strcmp("I")) { // Letra 'i' está na posição 3 no alfabeto
+        if (strcmp(palavra[nivel],"I") == 0) { // Letra 'i' está na posição 3 no alfabeto
             indice = 3;
         }
-        if (palavra[nivel].strcmp("O")) { // Letra 'o' está na posição 4 no alfabeto
+        if (strcmp(palavra[nivel],"O") == 0) { // Letra 'o' está na posição 4 no alfabeto
             indice = 4;
         }
         /* Chegou-se no ponto onde um dos elementos da palavra não possui um nó/prefixo equivalente presente na árvore.
@@ -53,6 +53,8 @@ void trie_adicionarPalavra(char* palavra, no* raiz) {
         aux = aux->filho[indice];
     }
     aux->tipo = 'P'; // Criou-se a palavra. 
+
+    return raiz; 
 }
 
 /* Função responsável por verificar se uma palavra se encontra ou não na árvore. Retorna o número 1 em caso afirmativo, e 0
