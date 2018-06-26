@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "trie.h"
+#include "trie_io.h"
 #include <stdio.h>
 
 /* Cria um nó vazio da árvore TRIE */
