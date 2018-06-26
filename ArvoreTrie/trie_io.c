@@ -3,11 +3,12 @@
 #include <string.h>
 #include "trie.h"
 
+
 #define TAMANHO_ALFABETO (6) /* Alfabeto formado pelas letras maiúsculas ABMIO mais um elemento para significar o fim do alfabeto. */
 #define TAMANHO_PALAVRA (30)
 
 /* Função que abre um arquivo contendo palavras formadas pelas letras do alfabeto ABMIO e as insere na árvore TRIE */
-void trie_gerarArvore(no* arv, char* palavra, char* nomeArqEntrada) {
+void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
     FILE* arquivoEnt;
     int i = 0;
     int numPalavras = 0;
@@ -22,7 +23,7 @@ void trie_gerarArvore(no* arv, char* palavra, char* nomeArqEntrada) {
         // Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
         fscanf(arquivoEnt, "%d", numPalavras);
 
-        vetChavesArv = (*char) calloc(numPalavras, sizeof (char));
+        vetChavesArv = calloc(numPalavras, sizeof (char));
 
         // Verifica se foi possível realizar a alocação de espaço para o vetor
         if (vetChavesArv == NULL) {
