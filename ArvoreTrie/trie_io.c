@@ -22,7 +22,7 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
         return;
     } else {
         // Pega o número de palavras que o arquivo contém pela  leitura da primeira linha do arquivo
-        fscanf(arquivoEnt, "%d", numPalavras);
+        fscanf(arquivoEnt, "%d", &numPalavras);
 
         vetChavesArv = calloc(numPalavras, sizeof (char));
 
@@ -37,7 +37,10 @@ void trie_gerarArvore(no* arv, char* nomeArqEntrada) {
             }
 
             for (i = 0; i < numPalavras; i++) {
-                arv = trie_adicionarPalavra(*(vetChavesArv+i), arv);
+
+
+                arv = trie_adicionarPalavra((vetChavesArv+i), arv);
+
             }
 
         }
